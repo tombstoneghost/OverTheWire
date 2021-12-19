@@ -1,0 +1,351 @@
+Level-0:
+
+Password: bandit0
+
+To gain password for next level: 
+> cat readme
+
+=====================================================================
+Level-1:
+
+Password: boJ9jbbUNNfktd78OOpsqOltutMc3MY1
+
+To gain password for next level: 
+> cat ./-
+
+=====================================================================
+Level-2:
+
+Password: CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
+
+To gain password for next level: 
+> cat spaces\ in\ this\ filename 
+
+=====================================================================
+Level-3:
+
+Password: UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
+
+To gain password for next level:
+> cd inhere
+> cat .hidden
+
+=====================================================================
+Level-4:
+
+Password: pIwrPrtPN36QITSp3EQaw936yaFoFgAB
+
+To gain password for next level:
+> cd inhere
+> cat ./-file*
+
+=====================================================================
+Level-5: 
+
+Password: koReBOKuIDDepwhWk7jZC0RTdopnAYKh
+
+To gain password for next level:
+> cd inhere
+> find * -size 1033c
+
+=====================================================================
+Level-6: 
+
+Password: DXjZPULLxYr17uwoI01bNLQbtFemEgo7
+
+To gain password for next level:
+> find / -user bandit7 -group bandit6 -size 33c
+
+=====================================================================
+Level-7: 
+
+Password: HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
+
+To gain password for next level:
+> cat data.txt | grep millionth
+
+=====================================================================
+Level-8: 
+
+Password: cvX2JJa4CFALtqS87jk27qwqGhBM9plV
+
+To gain password for next level:
+> sort data.txt | uniq -c
+
+=====================================================================
+Level-9: 
+
+Password: UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
+
+To gain password for next level:
+> strings data.txt | grep "="
+
+=====================================================================
+Level-10: 
+
+Password: truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+
+To gain password for next level:
+> cat data.txt | base64 -d
+
+=====================================================================
+Level-11: 
+
+Password: IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
+
+To gain password for next level:
+> cat data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m'
+
+=====================================================================
+Level-12: 
+
+Password: 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
+
+To gain password for next level:
+> xxd -r data.txt > /tmp/ghost
+> mv /tmp/ghost /tmp/data2.bin
+> gzip -d < /tmp/data2.bin > /tmp/res1
+> bzip2 -d < /tmp/res1 > /tmp/res2
+> gzip -d < /tmp/res2 > /tmp/res3
+> cd /tmp
+> mv /tmp/res3 data.tar.gz
+> tar -xvf data.tar.gz
+> mv data5.bin data2.tar.gz
+> bzip2 -d < data6.bin > res8
+> mv res8 data3.tar.gz
+> gzip -d < data8.bin > data9.bin
+
+=====================================================================
+Level-13: 
+
+Password: 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
+
+To gain password for next level:
+> ssh -i sshkey.private bandit14@localhost
+> cat /etc/bandit_pass/bandit14 
+
+=====================================================================
+Level-14: 
+
+Password: 4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
+
+To gain password for next level:
+> telnet 127.0.0.1 30000
+> Enter Password of Current Level
+
+=====================================================================
+Level-15: 
+
+Password: BfMYroe26WYalil77FoDi9qh59eK5xNr
+
+To gain password for next level:
+> openssl s_client -connect 127.0.0.1:30001
+> Enter Password of Current Level
+
+=====================================================================
+Level-16: 
+
+Password: cluFn7wTiGryunymYOu4RcffSxQluehd
+
+To gain password for next level:
+> nmap 127.0.0.1 -p 31000-32000
+> openssl s_client -connect 127.0.0.1:31790
+> Enter Password of Current Level
+
+=====================================================================
+Level-17: 
+
+Password: Use the RSA Key
+
+To gain password for next level:
+> diff passwords.old passwords.new 
+
+=====================================================================
+Level-18: 
+
+Password: kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
+
+To gain password for next level:
+> ssh bandit18@bandit.labs.overthewire.org -p 2220 bash --noprofile
+> cat readme
+
+=====================================================================
+Level-19: 
+
+Password: IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
+
+To gain password for next level:
+>  ./bandit20-do cat /etc/bandit_pass/bandit20 
+
+=====================================================================
+Level-20: 
+
+Password: GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+
+To gain password for next level:
+> [Terminal-1]: nc -lvp 1234 < /etc/bandit_pass/bandit20
+> [Terminal-2]: ./suconnect 1234
+
+=====================================================================
+Level-21: 
+
+Password: gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr
+
+To gain password for next level:
+> cat /etc/cron.d/cronjob_bandit22
+> cat /usr/bin/cronjob_bandit22.sh
+> cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+
+=====================================================================
+Level-22: 
+
+Password: Yk7owGAcWjwMVRwrTesJEwB7WVOiILLI
+
+To gain password for next level:
+> cat /etc/cron.d/cronjob_bandit23
+> cat /usr/bin/cronjob_bandit23.sh
+> [Host-Terminal]: echo I am user bandit23 | md5sum | cut -d ' ' -f 1
+> cat /tmp/8ca319486bfbbc3663ea0fbe81326349
+
+=====================================================================
+Level-23: 
+
+Password: jc1udXuA1tiHqjIsL8yaapX5XIAI6i0n
+
+To gain password for next level:
+> cat /etc/cron.d/cronjob_bandit24
+> cat /usr/bin/cronjob_bandit24.sh
+> nano get_pass.sh
+> [Script]
+    #!/bin/bash
+    cat /etc/bandit_pass/bandit24 > /tmp/bandit24
+> chmod 777 get_pass.sh
+> cat /tmp/bandit24
+
+=====================================================================
+Level-24: 
+
+Password: UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ
+
+To gain password for next level:
+> nano /tmp/get_pass.sh
+> [Script]
+    #!/bin/bash
+
+    for i in {0..9}
+    do
+            for j in {0..9}
+            do
+                    for k in {0..9}
+                    do
+                            for l in {0..9}
+                            do
+                                    echo "UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ $i$j$k$l" >> /tmp/combs.txt
+                            done
+                    done
+            done
+    done
+> /tmp/get_pass.sh
+> cat /tmp/combs.txt | nc 127.0.0.1 30002 
+
+=====================================================================
+Level-25: 
+
+Password: uNG9O58gUE7snukf3bvZ0rxhtnjzSGzG
+
+To gain password for next level:
+[Decrease Terminal Size]
+> ssh -i bandit26@localhost
+[Press v]
+> Expand the screen
+> :e /etc/bandit_pass/bandit26
+
+=====================================================================
+Level-26: 
+
+Password: 5czgV9L3Xx8JPOyRbXh6lQbmIOWvPT6Z
+
+For Shell, Enter the following
+:set shell=/bin/bash
+:shell
+
+To gain password for next level:
+> ./bandit27-do cat /etc/bandit_pass/bandit27
+    
+=====================================================================
+Level-27: 
+
+Password: 3ba3118a22e93127a4ed485be72ef5ea
+
+To gain password for next level:
+> cd /tmp
+> mkdir bandit27
+> git clone ssh://bandit27-git@localhost/home/bandit27-git/repo
+> cd bandit27
+> cat README
+
+=====================================================================
+Level-28: 
+
+Password: 0ef186ac70e04ea33b4c1853d2526fa2
+
+To gain password for next level:
+> cd /tmp
+> mkdir bandit28
+> git clone ssh://bandit28-git@localhost/home/bandit28-git/repo
+> git log
+> git checkout c086d11a00c0648d095d04c089786efef5e01264
+> cat README.md
+
+=====================================================================
+Level-29: 
+
+Password: bbc96594b4e001778eee9975372716b2
+
+To gain password for next level:
+> cd /tmp
+> mkdir bandit29
+> git clone ssh://bandit29-git@localhost/home/bandit29-git/repo
+> git branch -a
+> git checkout dev
+> cat README.md
+
+=====================================================================
+Level-30: 
+
+Password: 5b90576bedb2cc04c86a9e924ce42faf
+
+To gain password for next level:
+> cd /tmp
+> mkdir bandit30
+> git clone ssh://bandit30-git@localhost/home/bandit30-git/repo
+> git tag
+> git show secret
+
+=====================================================================
+Level-31: 
+
+Password: 47e603bb428404d265f59c42920d81e5
+
+To gain password for next level:
+> cd /tmp
+> mkdir bandit31
+> git clone ssh://bandit31-git@localhost/home/bandit31-git/repo
+> rm .gitignore
+> echo 'May I come in?' >> key.txt
+> git add .
+> git commit -m 'Get Flag'
+> git push -u origin master
+
+=====================================================================
+Level-32: 
+
+Password: 56a9bf19c63d650ce78e6ec0354ee45e
+
+To gain password for next level:
+> $0
+
+=====================================================================
+Level-33: 
+
+Password: c9c3199ddf4121b10cf581a98d51caee
