@@ -10,6 +10,7 @@
 ### Level 0 &rarr; 1
 
 **Steps:**
+
 - Connect: `ssh bandit0@bandit.labs.overthewire.org -p 2220`
 - Password: `bandit0`
 - Read the "readme" file: `cat readme`
@@ -21,6 +22,7 @@
 ### Level 1 &rarr; 2
 
 **Steps:**
+
 - Connect to the machine
 - There is a file named `-`
 - Use: `cat ./-`
@@ -32,6 +34,7 @@
 ### Level 2 &rarr; 3
 
 **Steps:**
+
 - Connect to the machine
 - File: `--spaces in this filename--`
 - Use: `cat ./--spaces\ in\ this\ filename--`
@@ -43,6 +46,7 @@
 ### Level 3 &rarr; 4
 
 **Steps:**
+
 - Connect to the machine
 - Folder `inhere` is empty
 - Use `ls -la` to find hidden file
@@ -55,6 +59,7 @@
 ### Level 4 &rarr; 5
 
 **Steps:**
+
 - Connect to the machine
 - Folder `inhere` contains files
 - Use: `strings inhere/-file0*`
@@ -66,6 +71,7 @@
 ### Level 5 &rarr; 6
 
 **Steps:**
+
 - Connect to the machine
 - Folder `inhere` contains many folders
 - Use: `find . -size 1033c`
@@ -78,6 +84,7 @@
 ### Level 6 &rarr; 7
 
 **Steps:**
+
 - Connect to the machine
 - Use: `find / -size 33c -user bandit7 2>/dev/null`
 - Then: `cat /var/lib/dpkg/info/bandit7.password`
@@ -89,6 +96,7 @@
 ### Level 7 &rarr; 8
 
 **Steps:**
+
 - Connect to the machine
 - Use: `cat data.txt | grep millionth`
 
@@ -99,6 +107,7 @@
 ### Level 8 &rarr; 9
 
 **Steps:**
+
 - Connect to the machine
 - Use: `sort data.txt | uniq -c | sort -r`
 
@@ -109,6 +118,7 @@
 ### Level 9 &rarr; 10
 
 **Steps:**
+
 - Connect to the machine
 - Use: `strings data.txt | grep =`
 
@@ -119,6 +129,7 @@
 ### Level 10 &rarr; 11
 
 **Steps:**
+
 - Connect to the machine
 - Use: `cat data.txt | base64 -d`
 
@@ -129,6 +140,7 @@
 ### Level 11 &rarr; 12
 
 **Steps:**
+
 - Connect to the machine
 - Use CyberChef to perform Rot13 on data.txt
 
@@ -139,6 +151,7 @@
 ### Level 12 &rarr; 13
 
 **Steps:**
+
 - Connect to the machine
 - Create temp dir: `mktemp -d`
 - Convert hexdump: `cat data.txt | xxd -r > data2.bin`
@@ -155,6 +168,7 @@
 ### Level 13 &rarr; 14
 
 **Steps:**
+
 - Connect to the machine
 - SSH to user bandit14 with private key:  
   `ssh -i sshkey.private bandit14@localhost -p 2220`
@@ -167,6 +181,7 @@
 ### Level 14 &rarr; 15
 
 **Steps:**
+
 - Connect to the machine
 - Connect to service on port 30000: `nc localhost 30000`
 - Submit password for current level
@@ -178,6 +193,7 @@
 ### Level 15 &rarr; 16
 
 **Steps:**
+
 - Connect to the machine
 - Connect using openssl: `openssl s_client -connect localhost:30001`
 - Submit password for current level
@@ -189,6 +205,7 @@
 ### Level 16 &rarr; 17
 
 **Steps:**
+
 - Connect to the machine
 - Use nmap: `nmap localhost -p 31000-32000`
 - Run openssl with found port: `openssl s_client -connect localhost:31790 -ign_eof`
@@ -200,6 +217,7 @@
 ### Level 17 &rarr; 18
 
 **Steps:**
+
 - Connect to the machine
 - Use: `diff passwords.old passwords.new`
 
@@ -210,6 +228,7 @@
 ### Level 18 &rarr; 19
 
 **Steps:**
+
 - Login:  
   `ssh bandit18@bandit.labs.overthewire.org -p 2220 "bash --noprofile --norc"`
 - No banner, use Linux command
@@ -222,6 +241,7 @@
 ### Level 19 &rarr; 20
 
 **Steps:**
+
 - Connect to the machine
 - SUID binary: `bandit20-do`
 - Use: `./bandit20-do cat /etc/bandit_pass/bandit20`
@@ -233,6 +253,7 @@
 ### Level 20 &rarr; 21
 
 **Steps:**
+
 - Connect to the machine
 - Send password to port 1234:  
   `echo -n "0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO" | nc -lp 1234 &`
@@ -245,6 +266,7 @@
 ### Level 21 &rarr; 22
 
 **Steps:**
+
 - Connect to the machine
 - Check cron for level 22: `/etc/cron.d/cronjob_bandit22`
 - Find password location in script
@@ -256,6 +278,7 @@
 ### Level 22 &rarr; 23
 
 **Steps:**
+
 - Connect to the machine
 - Check cron for level 23: `/etc/cron.d/cronjob_bandit23`
 - Command: `echo I am user bandit23 | md5sum | cut -d ' ' -f 1`
@@ -268,6 +291,7 @@
 ### Level 23 &rarr; 24
 
 **Steps:**
+
 - Connect to the machine
 - Check cron for level 24: `/etc/cron.d/cronjob_bandit24`
 - Script deletes files in `/var/spool/bandit24/foo`
@@ -286,6 +310,7 @@
 ### Level 24 &rarr; 25
 
 **Steps:**
+
 - Connect to the machine
 - Use script:
   ```bash
@@ -306,6 +331,7 @@
 ### Level 25 &rarr; 26
 
 **Steps:**
+
 - Connect to the machine
 - Home folder contains SSH Keys for Bandit26
 - Can't login due to different shell
@@ -322,6 +348,7 @@
 ### Level 26 &rarr; 27
 
 **Steps:**
+
 - From shell from level 26, file `bandit27-do` in home directory
 - Use: `./bandit27-do cat /etc/bandit_pass/bandit27`
 
@@ -332,6 +359,7 @@
 ### Level 27 &rarr; 28
 
 **Steps:**
+
 - Connect to the machine
 - Temp dir: `mktemp -d`
 - Clone repo:  
@@ -345,6 +373,7 @@
 ### Level 28 &rarr; 29
 
 **Steps:**
+
 - Connect to the machine
 - Temp dir: `mktemp -d`
 - Clone repo:  
@@ -360,6 +389,7 @@
 ### Level 29 &rarr; 30
 
 **Steps:**
+
 - Connect to the machine
 - Temp dir: `mktemp -d`
 - Clone repo:  
@@ -375,6 +405,7 @@
 ### Level 30 &rarr; 31
 
 **Steps:**
+
 - Connect to the machine
 - Temp dir: `mktemp -d`
 - Clone repo:  
@@ -389,6 +420,7 @@
 ### Level 31 &rarr; 32
 
 **Steps:**
+
 - Connect to the machine
 - Temp dir: `mktemp -d`
 - Clone repo:  
@@ -409,6 +441,7 @@
 ### Level 32 &rarr; 33
 
 **Steps:**
+
 - Connect to the machine
 - All commands result in uppercase
 - Enter `$0` (current shell, `sh`)

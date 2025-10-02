@@ -1,0 +1,21 @@
+site_name: OTW Wargames Solutions
+site_url: https://tombstoneghost.github.io/OverTheWire/
+theme:
+  name: material
+
+# Navigation (sidebar)
+nav:
+  - Home: README.md
+  - Bandit: bandit/solutions.md
+  # - Natas: natas/solutions.md
+  # - Leviathan: leviathan/solutions.md
+  # - Krypton: krypton/solutions.md
+  # - Narnia: narnia/solutions.md
+  # - Other Games: other-games/solutions.md
+
+# Optional: enable markdown extensions
+markdown_extensions:
+  - toc:
+      permalink: true
+  - admonition
+  - footnotes
