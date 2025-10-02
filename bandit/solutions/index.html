@@ -1,0 +1,1348 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://tombstoneghost.github.io/OverTheWire/bandit/solutions/">
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
+    
+    
+      
+        <title>Bandit - OTW Wargames Solutions</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2a3383ac.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#overthewire-bandit-solutions" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="OTW Wargames Solutions" class="md-header__button md-logo" aria-label="OTW Wargames Solutions" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            OTW Wargames Solutions
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Bandit
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="OTW Wargames Solutions" class="md-nav__button md-logo" aria-label="OTW Wargames Solutions" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    OTW Wargames Solutions
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Bandit
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bandit
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-to-the-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connecting to the Machine
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Connecting to the Machine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#level-0-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 0 &rarr; 1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-1-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 1 &rarr; 2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-2-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 2 &rarr; 3
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-3-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 3 &rarr; 4
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-4-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 4 &rarr; 5
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-5-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 5 &rarr; 6
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-6-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 6 &rarr; 7
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-7-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 7 &rarr; 8
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-8-9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 8 &rarr; 9
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-9-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 9 &rarr; 10
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-10-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 10 &rarr; 11
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-11-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 11 &rarr; 12
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-12-13" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 12 &rarr; 13
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-13-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 13 &rarr; 14
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-14-15" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 14 &rarr; 15
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-15-16" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 15 &rarr; 16
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-16-17" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 16 &rarr; 17
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-17-18" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 17 &rarr; 18
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-18-19" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 18 &rarr; 19
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-19-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 19 &rarr; 20
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-20-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 20 &rarr; 21
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-21-22" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 21 &rarr; 22
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-22-23" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 22 &rarr; 23
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-23-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 23 &rarr; 24
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-24-25" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 24 &rarr; 25
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-25-26" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 25 &rarr; 26
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-26-27" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 26 &rarr; 27
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-27-28" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 27 &rarr; 28
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-28-29" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 28 &rarr; 29
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-29-30" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 29 &rarr; 30
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-30-31" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 30 &rarr; 31
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-31-32" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 31 &rarr; 32
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-32-33" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 32 &rarr; 33
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-to-the-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connecting to the Machine
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Connecting to the Machine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#level-0-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 0 &rarr; 1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-1-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 1 &rarr; 2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-2-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 2 &rarr; 3
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-3-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 3 &rarr; 4
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-4-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 4 &rarr; 5
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-5-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 5 &rarr; 6
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-6-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 6 &rarr; 7
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-7-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 7 &rarr; 8
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-8-9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 8 &rarr; 9
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-9-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 9 &rarr; 10
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-10-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 10 &rarr; 11
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-11-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 11 &rarr; 12
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-12-13" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 12 &rarr; 13
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-13-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 13 &rarr; 14
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-14-15" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 14 &rarr; 15
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-15-16" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 15 &rarr; 16
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-16-17" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 16 &rarr; 17
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-17-18" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 17 &rarr; 18
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-18-19" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 18 &rarr; 19
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-19-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 19 &rarr; 20
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-20-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 20 &rarr; 21
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-21-22" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 21 &rarr; 22
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-22-23" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 22 &rarr; 23
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-23-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 23 &rarr; 24
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-24-25" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 24 &rarr; 25
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-25-26" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 25 &rarr; 26
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-26-27" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 26 &rarr; 27
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-27-28" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 27 &rarr; 28
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-28-29" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 28 &rarr; 29
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-29-30" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 29 &rarr; 30
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-30-31" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 30 &rarr; 31
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-31-32" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 31 &rarr; 32
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-32-33" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 32 &rarr; 33
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="overthewire-bandit-solutions">OverTheWire Bandit Solutions<a class="headerlink" href="#overthewire-bandit-solutions" title="Permanent link">&para;</a></h1>
+<h2 id="connecting-to-the-machine">Connecting to the Machine<a class="headerlink" href="#connecting-to-the-machine" title="Permanent link">&para;</a></h2>
+<ul>
+<li>SSH to port 2220 with the target user</li>
+<li>Use the password found in the previous level</li>
+</ul>
+<hr />
+<h3 id="level-0-1">Level 0 &rarr; 1<a class="headerlink" href="#level-0-1" title="Permanent link">&para;</a></h3>
+<p><strong>Steps:</strong></p>
+<ul>
+<li>Connect: <code>ssh bandit0@bandit.labs.overthewire.org -p 2220</code></li>
+<li>Password: <code>bandit0</code></li>
+<li>Read the "readme" file: <code>cat readme</code></li>
+</ul>
+<p><strong>Password:</strong> <code>ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If</code></p>
+<hr />
+<h3 id="level-1-2">Level 1 &rarr; 2<a class="headerlink" href="#level-1-2" title="Permanent link">&para;</a></h3>
+<p><strong>Steps:</strong></p>
+<ul>
+<li>Connect to the machine</li>
+<li>There is a file named <code>-</code></li>
+<li>Use: <code>cat ./-</code></li>
+</ul>
+<p><strong>Password:</strong> <code>263JGJPfgU6LtdEvgfWU1XP5yac29mFx</code></p>
+<hr />
+<h3 id="level-2-3">Level 2 &rarr; 3<a class="headerlink" href="#level-2-3" title="Permanent link">&para;</a></h3>
+<p><strong>Steps:</strong></p>
+<ul>
+<li>Connect to the machine</li>
+<li>File: <code>--spaces in this filename--</code></li>
+<li>Use: <code>cat ./--spaces\ in\ this\ filename--</code></li>
+</ul>
+<p><strong>Password:</strong> <code>MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx</code></p>
+<hr />
+<h3 id="level-3-4">Level 3 &rarr; 4<a class="headerlink" href="#level-3-4" title="Permanent link">&para;</a></h3>
+<p><strong>Steps:</strong></p>
+<ul>
+<li>Connect to the machine</li>
+<li>Folder <code>inhere</code> is empty</li>
+<li>Use <code>ls -la</code> to find hidden file</li>
+<li>Read the file</li>
+</ul>
+<p><strong>Password:</strong> <code>2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ</code></p>
+<hr />
+<h3 id="level-4-5">Level 4 &rarr; 5<a class="headerlink" href="#level-4-5" title="Permanent link">&para;</a></h3>
+<p><strong>Steps:</strong></p>
+<ul>
+<li>Connect to the machine</li>
+<li>Folder <code>inhere</code> contains files</li>
+<li>Use: <code>strings inhere/-file0*</code></li>
+</ul>
+<p><strong>Password:</strong> <code>4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw</code></p>
+<hr />
+<h3 id="level-5-6">Level 5 &rarr; 6<a class="headerlink" href="#level-5-6" title="Permanent link">&para;</a></h3>
+<p><strong>Steps:</strong></p>
+<ul>
+<li>Connect to the machine</li>
+<li>Folder <code>inhere</code> contains many folders</li>
+<li>Use: <code>find . -size 1033c</code></li>
+<li>Then: <code>cat ./maybehere07/.file2</code></li>
+</ul>
+<p><strong>Password:</strong> <code>HWasnPhtq9AVKe0dmk45nxy20cvUa6EG</code></p>
+<hr />
+<h3 id="level-6-7">Level 6 &rarr; 7<a class="headerlink" href="#level-6-7" title="Permanent link">&para;</a></h3>
+<p><strong>Steps:</strong></p>
+<ul>
+<li>Connect to the machine</li>
+<li>Use: <code>find / -size 33c -user bandit7 2&gt;/dev/null</code></li>
+<li>Then: <code>cat /var/lib/dpkg/info/bandit7.password</code></li>
+</ul>
+<p><strong>Password:</strong> <code>morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj</code></p>
+<hr />
+<h3 id="level-7-8">Level 7 &rarr; 8<a class="headerlink" href="#level-7-8" title="Permanent link">&para;</a></h3>
+<p><strong>Steps:</strong></p>
+<ul>
+<li>Connect to the machine</li>
+<li>Use: <code>cat data.txt | grep millionth</code></li>
+</ul>
+<p><strong>Password:</strong> <code>dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc</code></p>
+<hr />
+<h3 id="level-8-9">Level 8 &rarr; 9<a class="headerlink" href="#level-8-9" title="Permanent link">&para;</a></h3>
+<p><strong>Steps:</strong></p>
+<ul>
+<li>Connect to the machine</li>
+<li>Use: <code>sort data.txt | uniq -c | sort -r</code></li>
+</ul>
+<p><strong>Password:</strong> <code>4CKMh1JI91bUIZZPXDqGanal4xvAg0JM</code></p>
+<hr />
+<h3 id="level-9-10">Level 9 &rarr; 10<a class="headerlink" href="#level-9-10" title="Permanent link">&para;</a></h3>
+<p><strong>Steps:</strong></p>
+<ul>
+<li>Connect to the machine</li>
+<li>Use: <code>strings data.txt | grep =</code></li>
+</ul>
+<p><strong>Password:</strong> <code>FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey</code></p>
+<hr />
+<h3 id="level-10-11">Level 10 &rarr; 11<a class="headerlink" href="#level-10-11" title="Permanent link">&para;</a></h3>
+<p><strong>Steps:</strong></p>
+<ul>
+<li>Connect to the machine</li>
+<li>Use: <code>cat data.txt | base64 -d</code></li>
+</ul>
+<p><strong>Password:</strong> <code>dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr</code></p>
+<hr />
+<h3 id="level-11-12">Level 11 &rarr; 12<a class="headerlink" href="#level-11-12" title="Permanent link">&para;</a></h3>
+<p><strong>Steps:</strong></p>
+<ul>
+<li>Connect to the machine</li>
+<li>Use CyberChef to perform Rot13 on data.txt</li>
+</ul>
+<p><strong>Password:</strong> <code>7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4</code></p>
+<hr />
+<h3 id="level-12-13">Level 12 &rarr; 13<a class="headerlink" href="#level-12-13" title="Permanent link">&para;</a></h3>
+<p><strong>Steps:</strong></p>
+<ul>
+<li>Connect to the machine</li>
+<li>Create temp dir: <code>mktemp -d</code></li>
+<li>Convert hexdump: <code>cat data.txt | xxd -r &gt; data2.bin</code></li>
+<li>Convert to gzip: <code>mv data2.bin data2.gz</code></li>
+<li>Decompress: <code>gzip -d data2.gz</code></li>
+<li>Convert to bzip: <code>mv data2 data2.bz2</code></li>
+<li>Decompress: <code>bzip2 -d data2.bz2</code></li>
+<li>Repeat with relevant tools</li>
+</ul>
+<p><strong>Password:</strong> <code>FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn</code></p>
+<hr />
+<h3 id="level-13-14">Level 13 &rarr; 14<a class="headerlink" href="#level-13-14" title="Permanent link">&para;</a></h3>
+<p><strong>Steps:</strong></p>
+<ul>
+<li>Connect to the machine</li>
+<li>SSH to user bandit14 with private key:<br />
+<code>ssh -i sshkey.private bandit14@localhost -p 2220</code></li>
+<li>Read password in <code>/etc/bandit_pass/bandit14</code></li>
+</ul>
+<p><strong>Password:</strong> <code>MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS</code></p>
+<hr />
+<h3 id="level-14-15">Level 14 &rarr; 15<a class="headerlink" href="#level-14-15" title="Permanent link">&para;</a></h3>
+<p><strong>Steps:</strong></p>
+<ul>
+<li>Connect to the machine</li>
+<li>Connect to service on port 30000: <code>nc localhost 30000</code></li>
+<li>Submit password for current level</li>
+</ul>
+<p><strong>Password:</strong> <code>8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo</code></p>
+<hr />
+<h3 id="level-15-16">Level 15 &rarr; 16<a class="headerlink" href="#level-15-16" title="Permanent link">&para;</a></h3>
+<p><strong>Steps:</strong></p>
+<ul>
+<li>Connect to the machine</li>
+<li>Connect using openssl: <code>openssl s_client -connect localhost:30001</code></li>
+<li>Submit password for current level</li>
+</ul>
+<p><strong>Password:</strong> <code>kSkvUpMQ7lBYyCM4GBPvCvT1BfWRy0Dx</code></p>
+<hr />
+<h3 id="level-16-17">Level 16 &rarr; 17<a class="headerlink" href="#level-16-17" title="Permanent link">&para;</a></h3>
+<p><strong>Steps:</strong></p>
+<ul>
+<li>Connect to the machine</li>
+<li>Use nmap: <code>nmap localhost -p 31000-32000</code></li>
+<li>Run openssl with found port: <code>openssl s_client -connect localhost:31790 -ign_eof</code></li>
+<li>Get SSH Private Key and login:<br />
+<code>ssh -i level17.key bandit17@bandit.labs.overthewire.org -p 2220</code></li>
+</ul>
+<hr />
+<h3 id="level-17-18">Level 17 &rarr; 18<a class="headerlink" href="#level-17-18" title="Permanent link">&para;</a></h3>
+<p><strong>Steps:</strong></p>
+<ul>
+<li>Connect to the machine</li>
+<li>Use: <code>diff passwords.old passwords.new</code></li>
+</ul>
+<p><strong>Password:</strong> <code>x2gLTTjFwMOhQ8oWNbMN362QKxfRqGlO</code></p>
+<hr />
+<h3 id="level-18-19">Level 18 &rarr; 19<a class="headerlink" href="#level-18-19" title="Permanent link">&para;</a></h3>
+<p><strong>Steps:</strong></p>
+<ul>
+<li>Login:<br />
+<code>ssh bandit18@bandit.labs.overthewire.org -p 2220 "bash --noprofile --norc"</code></li>
+<li>No banner, use Linux command</li>
+<li><code>cat readme</code></li>
+</ul>
+<p><strong>Password:</strong> <code>cGWpMaKXVwDUNgPAVJbWYuGHVn9zl3j8</code></p>
+<hr />
+<h3 id="level-19-20">Level 19 &rarr; 20<a class="headerlink" href="#level-19-20" title="Permanent link">&para;</a></h3>
+<p><strong>Steps:</strong></p>
+<ul>
+<li>Connect to the machine</li>
+<li>SUID binary: <code>bandit20-do</code></li>
+<li>Use: <code>./bandit20-do cat /etc/bandit_pass/bandit20</code></li>
+</ul>
+<p><strong>Password:</strong> <code>0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO</code></p>
+<hr />
+<h3 id="level-20-21">Level 20 &rarr; 21<a class="headerlink" href="#level-20-21" title="Permanent link">&para;</a></h3>
+<p><strong>Steps:</strong></p>
+<ul>
+<li>Connect to the machine</li>
+<li>Send password to port 1234:<br />
+<code>echo -n "0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO" | nc -lp 1234 &amp;</code></li>
+<li>Connect using the binary to port 1234</li>
+</ul>
+<p><strong>Password:</strong> <code>EeoULMCra2q0dSkYj561DX7s1CpBuOBt</code></p>
+<hr />
+<h3 id="level-21-22">Level 21 &rarr; 22<a class="headerlink" href="#level-21-22" title="Permanent link">&para;</a></h3>
+<p><strong>Steps:</strong></p>
+<ul>
+<li>Connect to the machine</li>
+<li>Check cron for level 22: <code>/etc/cron.d/cronjob_bandit22</code></li>
+<li>Find password location in script</li>
+</ul>
+<p><strong>Password:</strong> <code>tRae0UfB9v0UzbCdn9cY0gQnds9GF58Q</code></p>
+<hr />
+<h3 id="level-22-23">Level 22 &rarr; 23<a class="headerlink" href="#level-22-23" title="Permanent link">&para;</a></h3>
+<p><strong>Steps:</strong></p>
+<ul>
+<li>Connect to the machine</li>
+<li>Check cron for level 23: <code>/etc/cron.d/cronjob_bandit23</code></li>
+<li>Command: <code>echo I am user bandit23 | md5sum | cut -d ' ' -f 1</code></li>
+<li>Execute locally, get password in filename</li>
+</ul>
+<p><strong>Password:</strong> <code>0Zf11ioIjMVN551jX3CmStKLYqjk54Ga</code></p>
+<hr />
+<h3 id="level-23-24">Level 23 &rarr; 24<a class="headerlink" href="#level-23-24" title="Permanent link">&para;</a></h3>
+<p><strong>Steps:</strong></p>
+<ul>
+<li>Connect to the machine</li>
+<li>Check cron for level 24: <code>/etc/cron.d/cronjob_bandit24</code></li>
+<li>Script deletes files in <code>/var/spool/bandit24/foo</code></li>
+<li>Write a script to copy password to temp directory</li>
+<li>Set permissions: <code>chmod 777 /tmp/tmp.VDBvAS7DQd</code></li>
+<li>Create pass file: <code>touch pass; chmod 777 pass</code></li>
+<li>Script:<br />
+<code>echo "cat /etc/bandit_pass/bandit24 &gt;&gt; /tmp/tmp.VDBvAS7DQd/pass" &gt; script.sh</code></li>
+<li>Copy script: <code>cp script.sh /var/spool/bandit24/foo</code></li>
+<li>After a minute, get password from file</li>
+</ul>
+<p><strong>Password:</strong> <code>gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8</code></p>
+<hr />
+<h3 id="level-24-25">Level 24 &rarr; 25<a class="headerlink" href="#level-24-25" title="Permanent link">&para;</a></h3>
+<p><strong>Steps:</strong></p>
+<ul>
+<li>Connect to the machine</li>
+<li>Use script:
+  <code>bash
+  for i in $(seq 1 9999); do
+      num=$(printf "%04d" "$i");
+      response=$( printf '%s %s\r\n' "gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8" "$num" | nc -N localhost 30002 2&gt;/dev/null); 
+      if [[ "$response" != *"Wrong!"* ]]; then 
+          echo $response; 
+      fi
+  done;</code></li>
+<li>After a few seconds, get password</li>
+</ul>
+<p><strong>Password:</strong> <code>iCi86ttT4KSNe1armKiwbQNmB3YJP3q4</code></p>
+<hr />
+<h3 id="level-25-26">Level 25 &rarr; 26<a class="headerlink" href="#level-25-26" title="Permanent link">&para;</a></h3>
+<p><strong>Steps:</strong></p>
+<ul>
+<li>Connect to the machine</li>
+<li>Home folder contains SSH Keys for Bandit26</li>
+<li>Can't login due to different shell</li>
+<li>Check shell: <code>cat /etc/passwd | grep bandit26</code></li>
+<li>Shell is <code>/usr/bin/showtext</code></li>
+<li>Make terminal smaller before SSH, get into interactive command with <code>v</code></li>
+<li>Use <code>:e /etc/bandit_pass/bandit26</code></li>
+<li>To get shell: <code>:set shell=/bin/bash</code> then <code>:shell</code></li>
+</ul>
+<p><strong>Password:</strong> <code>s0773xxkk0MXfdqOfPRVr9L3jJBUOgCZ</code></p>
+<hr />
+<h3 id="level-26-27">Level 26 &rarr; 27<a class="headerlink" href="#level-26-27" title="Permanent link">&para;</a></h3>
+<p><strong>Steps:</strong></p>
+<ul>
+<li>From shell from level 26, file <code>bandit27-do</code> in home directory</li>
+<li>Use: <code>./bandit27-do cat /etc/bandit_pass/bandit27</code></li>
+</ul>
+<p><strong>Password:</strong> <code>upsNCc7vzaRDx6oZC6GiR6ERwe1MowGB</code></p>
+<hr />
+<h3 id="level-27-28">Level 27 &rarr; 28<a class="headerlink" href="#level-27-28" title="Permanent link">&para;</a></h3>
+<p><strong>Steps:</strong></p>
+<ul>
+<li>Connect to the machine</li>
+<li>Temp dir: <code>mktemp -d</code></li>
+<li>Clone repo:<br />
+<code>git clone ssh://bandit27-git@localhost:2220/home/bandit27-git/repo</code></li>
+<li>Password is in README</li>
+</ul>
+<p><strong>Password:</strong> <code>Yz9IpL0sBcCeuG7m9uQFt8ZNpS4HZRcN</code></p>
+<hr />
+<h3 id="level-28-29">Level 28 &rarr; 29<a class="headerlink" href="#level-28-29" title="Permanent link">&para;</a></h3>
+<p><strong>Steps:</strong></p>
+<ul>
+<li>Connect to the machine</li>
+<li>Temp dir: <code>mktemp -d</code></li>
+<li>Clone repo:<br />
+<code>git clone ssh://bandit28-git@localhost:2220/home/bandit28-git/repo</code></li>
+<li>Use <code>git log</code></li>
+<li>Checkout previous commit:<br />
+<code>git checkout 68314e012fbaa192abfc9b78ac369c82b75fab8f</code></li>
+</ul>
+<p><strong>Password:</strong> <code>4pT1t5DENaYuqnqvadYs1oE4QLCdjmJ7</code></p>
+<hr />
+<h3 id="level-29-30">Level 29 &rarr; 30<a class="headerlink" href="#level-29-30" title="Permanent link">&para;</a></h3>
+<p><strong>Steps:</strong></p>
+<ul>
+<li>Connect to the machine</li>
+<li>Temp dir: <code>mktemp -d</code></li>
+<li>Clone repo:<br />
+<code>git clone ssh://bandit29-git@localhost:2220/home/bandit29-git/repo</code></li>
+<li>Branch <code>dev</code>: <code>git branch -a</code></li>
+<li>Checkout: <code>git checkout dev</code></li>
+<li>Check README</li>
+</ul>
+<p><strong>Password:</strong> <code>qp30ex3VLz5MDG1n91YowTv4Q8l7CDZL</code></p>
+<hr />
+<h3 id="level-30-31">Level 30 &rarr; 31<a class="headerlink" href="#level-30-31" title="Permanent link">&para;</a></h3>
+<p><strong>Steps:</strong></p>
+<ul>
+<li>Connect to the machine</li>
+<li>Temp dir: <code>mktemp -d</code></li>
+<li>Clone repo:<br />
+<code>git clone ssh://bandit30-git@localhost:2220/home/bandit30-git/repo</code></li>
+<li>Tag <code>secret</code>: <code>git tag -l</code></li>
+<li>Read tag: <code>git show secret</code></li>
+</ul>
+<p><strong>Password:</strong> <code>fb5S2xb7bRyFmAvQYQGEqsbhVyJqhnDy</code></p>
+<hr />
+<h3 id="level-31-32">Level 31 &rarr; 32<a class="headerlink" href="#level-31-32" title="Permanent link">&para;</a></h3>
+<p><strong>Steps:</strong></p>
+<ul>
+<li>Connect to the machine</li>
+<li>Temp dir: <code>mktemp -d</code></li>
+<li>Clone repo:<br />
+<code>git clone ssh://bandit31-git@localhost:2220/home/bandit31-git/repo</code></li>
+<li>Update <code>.gitignore</code> (remove all contents)</li>
+<li>Create <code>key.txt</code> and push:
+  <code>bash
+  echo "May I come in?" &gt;&gt; key.txt
+  git add .
+  git commit -m "May I come in?"
+  git push -u origin master</code></li>
+</ul>
+<p><strong>Password:</strong> <code>3O9RfhqyAlVBEZpVb6LYStshZoqoSx5K</code></p>
+<hr />
+<h3 id="level-32-33">Level 32 &rarr; 33<a class="headerlink" href="#level-32-33" title="Permanent link">&para;</a></h3>
+<p><strong>Steps:</strong></p>
+<ul>
+<li>Connect to the machine</li>
+<li>All commands result in uppercase</li>
+<li>Enter <code>$0</code> (current shell, <code>sh</code>)</li>
+<li>Get shell access</li>
+<li>Read password: <code>/etc/bandit_pass/bandit33</code></li>
+</ul>
+<p><strong>Password:</strong> <code>tQdtbs5D5i2vJwkO8mEyYEyTL8izoeJ0</code></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
